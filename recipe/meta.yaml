@@ -1,5 +1,5 @@
 {% set name = "persistent" %}
-{% set version = "4.8.0" %}
+{% set version = "4.9.0" %}
 
 
 package:
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/persistent-{{ version }}.tar.gz
-  sha256: 9d177ead3fa3c1f5d62a36d4526754b376e0504c7d4b75cb9aa52fb771dec6b2
+  sha256: 4701b31d81c1042265725af390450e9d916ad74b9c178b7010053853591e0c6a
 
 build:
   number: 0
