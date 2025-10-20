@@ -22,6 +22,7 @@ requirements:
     - cffi
     - pip
     - python
+    - setuptools
   run:
     - cffi
     - python
