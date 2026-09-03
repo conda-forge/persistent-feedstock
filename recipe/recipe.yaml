@@ -1,31 +1,32 @@
 schema_version: 1
 
 context:
-  name: persistent
   version: "5.2"
 
 package:
-  name: ${{ name|lower }}
+  name: persistent
   version: ${{ version }}
 
 source:
-  url: https://pypi.io/packages/source/${{ name[0] }}/${{ name }}/persistent-${{ version }}.tar.gz
+  url: https://pypi.org/packages/source/p/persistent/persistent-${{ version }}.tar.gz
   sha256: dbea5d1ff9db4e451ca39bc0b42a9ea537e6cac9282ae8c0780fb8ffae3ec834
 
 build:
   number: 0
-  script: ${{ PYTHON }} -m pip install . -vv
+  script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
   build:
     - ${{ compiler('c') }}
+    - ${{ stdlib('c') }}
   host:
+    - python
+    - setuptools
     - cffi
     - pip
-    - python
   run:
-    - cffi
     - python
+    - cffi
     - zope.interface
 
 tests:
@@ -41,6 +42,7 @@ about:
     - COPYRIGHT.txt
     - LICENSE.txt
   homepage: https://github.com/zopefoundation/persistent/
+  documentation: https://persistent.readthedocs.io
 
 extra:
   recipe-maintainers:
