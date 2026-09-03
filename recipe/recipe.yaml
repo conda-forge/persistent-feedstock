@@ -34,6 +34,16 @@ tests:
       imports:
         - persistent
       pip_check: true
+  - requirements:
+      run:
+        - python
+        # - manuel
+    script:
+      # TODO: restore when we have manuel
+      - if: unix
+        then: rm ${SP_DIR}/persistent/tests/test_docs.py
+        else: rm %SP_DIR%/persistent/tests/test_docs.py
+      - python -m unittest discover -b -v persistent
 
 about:
   summary: Translucent persistent objects
