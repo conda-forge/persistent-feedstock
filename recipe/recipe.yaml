@@ -14,6 +14,8 @@ source:
 build:
   number: 0
   script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  # not supported by 5.2
+  skip: match(python, '>=3.14')
 
 requirements:
   build:
