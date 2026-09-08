@@ -1,0 +1,63 @@
+schema_version: 1
+
+context:
+  version: "5.2"
+
+package:
+  name: persistent
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/p/persistent/persistent-${{ version }}.tar.gz
+  sha256: dbea5d1ff9db4e451ca39bc0b42a9ea537e6cac9282ae8c0780fb8ffae3ec834
+
+build:
+  number: 0
+  script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  # not supported by 5.2
+  skip: match(python, '>=3.14')
+
+requirements:
+  build:
+    - ${{ compiler('c') }}
+    - ${{ stdlib('c') }}
+  host:
+    - python
+    - setuptools
+    - cffi
+    - pip
+  run:
+    - python
+    - cffi
+    - zope.interface
+
+tests:
+  - python:
+      imports:
+        - persistent
+      pip_check: true
+  - requirements:
+      run:
+        - python
+        # - manuel
+    script:
+      # TODO: restore when we have manuel
+      - if: unix
+        then: rm ${SP_DIR}/persistent/tests/test_docs.py
+        else: rm %SP_DIR%/persistent/tests/test_docs.py
+      - python -m unittest discover -b -v persistent
+
+about:
+  summary: Translucent persistent objects
+  license: ZPL-2.1
+  license_file:
+    - COPYRIGHT.txt
+    - LICENSE.txt
+  homepage: https://github.com/zopefoundation/persistent/
+  documentation: https://persistent.readthedocs.io
+
+extra:
+  recipe-maintainers:
+    - osamples
+    - izahn
+    - mgorny
