@@ -12,7 +12,7 @@ source:
   sha256: dbea5d1ff9db4e451ca39bc0b42a9ea537e6cac9282ae8c0780fb8ffae3ec834
 
 build:
-  number: 0
+  number: 1
   script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   # not supported by 5.2
   skip: match(python, '>=3.14')
