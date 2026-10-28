@@ -1,7 +1,7 @@
 schema_version: 1
 
 context:
-  version: "6.8"
+  version: "6.9"
 
 package:
   name: persistent
@@ -9,7 +9,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/p/persistent/persistent-${{ version }}.tar.gz
-  sha256: 2e7ccaa1b1ab5346be903980bf74ac301e5a7be4e6949c93cf9f2a716add8b18
+  sha256: 85727c3d638ff8830878abf816acfaa8c288a3b372ab77ba482367eba970e2b2
 
 build:
   number: 0
